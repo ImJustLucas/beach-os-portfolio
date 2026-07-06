@@ -1,0 +1,74 @@
+<h2>Quel concept de base pour ton portfolio ?</h2>
+<p class="subtitle">Trois structures possibles pour le thème plage / surf / soleil / skate. Regarde les mini-maquettes du premier écran (ce qu'on voit en arrivant) et clique sur celle qui te parle.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="pure-beach" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;overflow:hidden;">
+      <div style="position:relative;height:230px;background:linear-gradient(180deg,#FFD34E 0%,#FF9A3C 35%,#FF6B6B 60%,#4ECDC4 60%,#2BB3A3 100%);font-family:Georgia,serif;">
+        <div style="position:absolute;top:22px;left:50%;transform:translateX(-50%);width:70px;height:70px;border-radius:50%;background:#FFF3C4;box-shadow:0 0 40px 15px rgba(255,243,196,.7);"></div>
+        <div style="position:absolute;top:58%;left:0;right:0;height:12px;background:rgba(255,255,255,.5);border-radius:50% 50% 0 0;"></div>
+        <div style="position:absolute;top:30%;left:0;right:0;text-align:center;">
+          <div style="font-size:34px;font-weight:900;color:#7A2E0E;letter-spacing:1px;text-shadow:2px 2px 0 rgba(255,255,255,.4);">YOOO, I'M LUCAS</div>
+          <div style="font-size:13px;color:#7A2E0E;margin-top:4px;">software developer riding the web since 2020 🏄</div>
+        </div>
+        <div style="position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:12px;color:#fff;">↓ scroll pour plonger ↓</div>
+        <div style="position:absolute;bottom:30px;right:24px;font-size:28px;">🌴</div>
+        <div style="position:absolute;bottom:34px;left:24px;font-size:24px;">🛹</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Plage pure « one-page immersive »</h3>
+      <p>Une seule grande page qui raconte une journée à la plage : hero plein écran soleil couchant, on scrolle et on « descend » vers l'eau — chaque section a son ambiance (sable, vague, session skate au coucher du soleil). Wow immédiat, narration forte, zéro métaphore à comprendre.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="beach-os" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;overflow:hidden;">
+      <div style="position:relative;height:230px;background:linear-gradient(180deg,#FF9A3C 0%,#FF6B6B 45%,#4ECDC4 45%,#2BB3A3 100%);font-family:'Helvetica Neue',sans-serif;">
+        <div style="position:absolute;top:0;left:0;right:0;height:22px;background:rgba(255,248,225,.9);display:flex;align-items:center;padding:0 10px;font-size:10px;color:#7A2E0E;gap:10px;">🌊 BeachOS &nbsp; Fichiers &nbsp; Sessions &nbsp; Contact <span style="margin-left:auto;">☀️ 28°C — 14:20</span></div>
+        <div style="position:absolute;top:38px;left:18px;width:150px;background:#FFF8E1;border:2px solid #7A2E0E;border-radius:8px;box-shadow:4px 4px 0 rgba(122,46,14,.35);">
+          <div style="background:#FF6B6B;border-radius:6px 6px 0 0;padding:3px 8px;font-size:9px;color:#fff;">● ● ● &nbsp; mes-projets.surf</div>
+          <div style="padding:8px;font-size:9px;color:#7A2E0E;">🏄 karaoke-app<br>🌴 imjustlucas.dev<br>🛹 side-project</div>
+        </div>
+        <div style="position:absolute;top:70px;left:190px;width:130px;background:#FFF8E1;border:2px solid #7A2E0E;border-radius:8px;box-shadow:4px 4px 0 rgba(122,46,14,.35);">
+          <div style="background:#4ECDC4;border-radius:6px 6px 0 0;padding:3px 8px;font-size:9px;color:#fff;">● ● ● &nbsp; about-me.txt</div>
+          <div style="padding:8px;font-size:9px;color:#7A2E0E;">Yoooo, I'm Lucas!<br>Paris-based dev 💖</div>
+        </div>
+        <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(255,248,225,.85);border-radius:12px;padding:4px 12px;font-size:16px;letter-spacing:6px;">🏄 📁 🎬 📻 ✉️</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — « Beach OS » complet</h3>
+      <p>Tout le site est un bureau d'ordinateur rétro habillé plage : fond d'écran animé, fenêtres draggables pour chaque section (projets, bio, vidéos YT), dock avec icônes surf. Très joueur, très mémorable, montre tes skills front — mais demande plus de dev et le visiteur doit « explorer » pour trouver le contenu.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="hybrid" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;overflow:hidden;">
+      <div style="position:relative;height:230px;background:linear-gradient(180deg,#FFD34E 0%,#FF9A3C 40%,#FF6B6B 70%,#4ECDC4 70%,#2BB3A3 100%);font-family:Georgia,serif;">
+        <div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:50px;height:50px;border-radius:50%;background:#FFF3C4;box-shadow:0 0 30px 10px rgba(255,243,196,.7);"></div>
+        <div style="position:absolute;top:22%;left:0;right:0;text-align:center;">
+          <div style="font-size:26px;font-weight:900;color:#7A2E0E;text-shadow:2px 2px 0 rgba(255,255,255,.4);">YOOO, I'M LUCAS</div>
+        </div>
+        <div style="position:absolute;top:48%;left:30px;width:140px;background:#FFF8E1;border:2px solid #7A2E0E;border-radius:8px;box-shadow:4px 4px 0 rgba(122,46,14,.35);transform:rotate(-3deg);">
+          <div style="background:#FF6B6B;border-radius:6px 6px 0 0;padding:3px 8px;font-size:9px;color:#fff;">● ● ● &nbsp; projet-01</div>
+          <div style="padding:8px;font-size:9px;color:#7A2E0E;">🏄 karaoke platform<br>Next.js · Nest.js</div>
+        </div>
+        <div style="position:absolute;top:56%;right:30px;width:140px;background:#FFF8E1;border:2px solid #7A2E0E;border-radius:8px;box-shadow:4px 4px 0 rgba(122,46,14,.35);transform:rotate(2deg);">
+          <div style="background:#4ECDC4;border-radius:6px 6px 0 0;padding:3px 8px;font-size:9px;color:#fff;">● ● ● &nbsp; projet-02</div>
+          <div style="padding:8px;font-size:9px;color:#7A2E0E;">🛹 side project<br>React · TS</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Hybride : plage immersive + fenêtres OS pour les projets</h3>
+      <p>Le site est une one-page plage immersive (comme A), mais la section projets reprend le clin d'œil OS : chaque projet est une petite fenêtre rétro posée sur le sable, qu'on peut ouvrir. Le thème plage domine, l'idée OS survit en easter egg maîtrisé.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="section">
+  <p class="subtitle">Clique sur une carte pour la sélectionner, puis dis-moi en terminal ce qui te fait vibrer (ou ce qui te refroidit) dans chacune.</p>
+</div>

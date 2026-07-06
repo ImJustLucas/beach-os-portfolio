@@ -1,0 +1,58 @@
+<h2>Affiner la piste C</h2>
+<p class="subtitle">À gauche la C originale (scanlines marquées, ciel en bandes dures). À droite une version « C-soft » : les couleurs fondues de A, des scanlines très discrètes, le pixel-art réservé aux sprites et aux fenêtres. Et dans les deux cas, un bouton [CRT] dans la barre de menu permettrait de couper l'effet, comme un réglage de vieille télé.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="c-full" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;overflow:hidden;">
+      <div style="position:relative;height:250px;background:#111;padding:8px;">
+        <div style="position:relative;height:100%;border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#FFE066 0 12%,#FFC94D 12% 25%,#FFA94D 25% 38%,#FF8C5A 38% 48%,#FF6B6B 48% 55%,#3EC9B9 55% 72%,#2BB3A3 72% 100%);">
+          <div style="position:absolute;top:22px;left:58%;width:32px;height:32px;background:#FFF3C4;box-shadow:0 -5px 0 -2px #FFF3C4, 0 5px 0 -2px #FFF3C4, -5px 0 0 -2px #FFF3C4, 5px 0 0 -2px #FFF3C4;"></div>
+          <div style="position:absolute;top:0;left:0;right:0;height:18px;background:#FFF8E1;border-bottom:2px solid #7A2E0E;display:flex;align-items:center;padding:0 8px;font-size:9px;color:#7A2E0E;font-family:monospace;font-weight:bold;">▓ BEACH-OS <span style="margin-left:auto;">[CRT:ON] ☀ 28°C</span></div>
+          <div style="position:absolute;top:32px;left:14px;width:150px;background:#FFF8E1;border:3px solid #7A2E0E;box-shadow:5px 5px 0 #7A2E0E;">
+            <div style="background:#7A2E0E;padding:3px 6px;font-size:9px;color:#FFF8E1;font-family:monospace;font-weight:bold;">■ MES-PROJETS.SRF</div>
+            <div style="padding:7px;font-size:9px;color:#7A2E0E;font-family:monospace;font-weight:bold;">► KARAOKE-APP<br>► SIDE-PROJECT</div>
+          </div>
+          <div style="position:absolute;top:46%;right:14px;font-family:monospace;font-weight:900;font-size:18px;letter-spacing:2px;color:#FFF3C4;text-shadow:-2px 0 0 rgba(255,0,80,.7), 2px 0 0 rgba(0,255,255,.7);">I'M LUCAS_</div>
+          <div style="position:absolute;bottom:24px;left:18px;font-size:20px;">🌴</div>
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.25) 0 1px,transparent 1px 3px);pointer-events:none;"></div>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.4) 100%);pointer-events:none;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C-full — l'originale</h3>
+      <p>Ciel en bandes dures (dithering marqué), scanlines bien visibles, vignettage appuyé. Maximum de caractère, mais l'effet est permanent et peut fatiguer sur les textes longs.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c-soft" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:0;overflow:hidden;">
+      <div style="position:relative;height:250px;background:#111;padding:8px;">
+        <div style="position:relative;height:100%;border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#FFD34E 0%,#FF9A3C 30%,#FF5E62 48%,#FF6B6B 54%,#3EC9B9 55%,#2BB3A3 85%,#1F8F84 100%);">
+          <div style="position:absolute;top:20px;left:58%;width:34px;height:34px;background:#FFF3C4;box-shadow:0 -5px 0 -2px #FFF3C4, 0 5px 0 -2px #FFF3C4, -5px 0 0 -2px #FFF3C4, 5px 0 0 -2px #FFF3C4, 0 0 26px 10px rgba(255,243,196,.55);"></div>
+          <div style="position:absolute;top:0;left:0;right:0;height:18px;background:#FFF8E1;border-bottom:2px solid #7A2E0E;display:flex;align-items:center;padding:0 8px;font-size:9px;color:#7A2E0E;font-family:monospace;font-weight:bold;">▓ BEACH-OS <span style="margin-left:auto;">[CRT:ON] ☀ 28°C</span></div>
+          <div style="position:absolute;top:32px;left:14px;width:150px;background:#FFF8E1;border:3px solid #7A2E0E;box-shadow:5px 5px 0 #7A2E0E;">
+            <div style="background:#7A2E0E;padding:3px 6px;font-size:9px;color:#FFF8E1;font-family:monospace;font-weight:bold;">■ MES-PROJETS.SRF</div>
+            <div style="padding:7px;font-size:9px;color:#7A2E0E;font-family:monospace;font-weight:bold;">► KARAOKE-APP<br>► SIDE-PROJECT</div>
+          </div>
+          <div style="position:absolute;top:46%;right:14px;font-family:monospace;font-weight:900;font-size:18px;letter-spacing:2px;color:#FFF3C4;text-shadow:2px 2px 0 rgba(122,46,14,.5);">I'M LUCAS_</div>
+          <div style="position:absolute;bottom:24px;left:18px;font-size:20px;">🌴</div>
+          <div style="position:absolute;bottom:36px;right:24px;font-size:16px;">🛹</div>
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.09) 0 1px,transparent 1px 4px);pointer-events:none;"></div>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 68%,rgba(0,0,0,.22) 100%);pointer-events:none;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C-soft — pixel-art + CRT discret + couleurs de A</h3>
+      <p>Le dégradé coucher de soleil reste fondu et riche (comme A), le pixel-art vit dans les sprites, les fenêtres et la typo, et le CRT se fait oublier : scanlines à ~10% d'opacité, vignettage léger. Le glitch rouge/cyan est réservé aux moments forts (hover, transitions). Lisible en continu, wow intact.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="section">
+  <h3>Dans les deux cas</h3>
+  <p class="subtitle">Le bouton [CRT:ON/OFF] dans la barre de menu Beach OS coupe scanlines + vignettage + glitchs pour ceux que ça gêne — et c'est un détail d'interface qui vend la métaphore. On peut aussi imaginer l'inverse : arriver avec un effet « allumage de télé » bien marqué (flash, balayage) qui se stabilise ensuite en mode discret.</p>
+</div>

@@ -1,0 +1,97 @@
+<h2>Beach OS — vue d'ensemble du design</h2>
+<p class="subtitle">Le bureau complet (desktop) et la console portable (mobile). Ce ne sont pas les visuels finaux, mais la structure et l'ambiance validées jusqu'ici : pixel-art C-soft, CRT discret désactivable, sons, FR/EN.</p>
+
+<div class="mockup">
+  <div class="mockup-header">Desktop — le bureau Beach OS au chargement</div>
+  <div class="mockup-body" style="padding:0;">
+    <div style="position:relative;height:420px;background:#111;padding:10px;">
+      <div style="position:relative;height:100%;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#FFD34E 0%,#FF9A3C 28%,#FF5E62 46%,#FF6B6B 53%,#3EC9B9 54%,#2BB3A3 82%,#1F8F84 100%);">
+
+        <div style="position:absolute;top:0;left:0;right:0;height:26px;background:#FFF8E1;border-bottom:2px solid #7A2E0E;display:flex;align-items:center;padding:0 12px;font-size:11px;color:#7A2E0E;font-family:monospace;font-weight:bold;gap:14px;z-index:30;">
+          🌊 BEACH-OS &nbsp; Fichiers &nbsp; Sessions
+          <span style="margin-left:auto;display:flex;gap:12px;align-items:center;">[CRT:ON] &nbsp; [🔊] &nbsp; [FR|EN] &nbsp; ☀ 28°C — 14:20</span>
+        </div>
+
+        <div style="position:absolute;top:44px;left:64%;width:44px;height:44px;background:#FFF3C4;box-shadow:0 -7px 0 -3px #FFF3C4, 0 7px 0 -3px #FFF3C4, -7px 0 0 -3px #FFF3C4, 7px 0 0 -3px #FFF3C4, 0 0 34px 12px rgba(255,243,196,.5);"></div>
+
+        <div style="position:absolute;top:40px;right:14px;display:flex;flex-direction:column;gap:12px;align-items:center;font-family:monospace;font-size:9px;color:#7A2E0E;font-weight:bold;z-index:10;">
+          <div style="text-align:center;background:rgba(255,248,225,.75);border:2px solid #7A2E0E;padding:5px 6px;box-shadow:3px 3px 0 rgba(122,46,14,.4);">🏄<br>PROJECTS.SRF</div>
+          <div style="text-align:center;background:rgba(255,248,225,.75);border:2px solid #7A2E0E;padding:5px 6px;box-shadow:3px 3px 0 rgba(122,46,14,.4);">🗺️<br>CAREER.LOG</div>
+          <div style="text-align:center;background:rgba(255,248,225,.75);border:2px solid #7A2E0E;padding:5px 6px;box-shadow:3px 3px 0 rgba(122,46,14,.4);">📺<br>BEACH-TV</div>
+          <div style="text-align:center;background:rgba(255,248,225,.75);border:2px solid #7A2E0E;padding:5px 6px;box-shadow:3px 3px 0 rgba(122,46,14,.4);">✉️<br>POSTCARD.EXE</div>
+        </div>
+
+        <div style="position:absolute;top:52px;left:20px;width:290px;background:#FFF8E1;border:3px solid #7A2E0E;box-shadow:6px 6px 0 #7A2E0E;z-index:20;">
+          <div style="background:#7A2E0E;padding:4px 8px;font-size:10px;color:#FFF8E1;font-family:monospace;font-weight:bold;display:flex;gap:6px;">
+            <span style="color:#FF6B6B;">■</span><span style="color:#FFD34E;">■</span><span style="color:#3EC9B9;">■</span> PROJECTS.SRF
+          </div>
+          <div style="padding:10px;font-size:10px;color:#7A2E0E;font-family:monospace;font-weight:bold;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="border:2px dashed #7A2E0E;padding:8px;text-align:center;">🏄 KARAOKE<br>PLATFORM<span style="display:block;font-weight:normal;">Nest·React</span></div>
+            <div style="border:2px dashed #7A2E0E;padding:8px;text-align:center;">🛹 SIDE<br>PROJECT<span style="display:block;font-weight:normal;">TS·Vite</span></div>
+            <div style="border:2px dashed #7A2E0E;padding:8px;text-align:center;">🌴 IMJUST<br>LUCAS.DEV<span style="display:block;font-weight:normal;">Start</span></div>
+            <div style="border:2px dashed #7A2E0E;padding:8px;text-align:center;">＋ MORE_</div>
+          </div>
+        </div>
+
+        <div style="position:absolute;top:150px;left:250px;width:230px;background:#FFF8E1;border:3px solid #7A2E0E;box-shadow:6px 6px 0 #7A2E0E;transform:rotate(1deg);z-index:21;">
+          <div style="background:#3EC9B9;padding:4px 8px;font-size:10px;color:#fff;font-family:monospace;font-weight:bold;">■ ■ ■ ABOUT-ME.TXT</div>
+          <div style="padding:10px;font-size:10px;color:#7A2E0E;font-family:monospace;font-weight:bold;line-height:1.6;">YOOO, I'M LUCAS!_<br><span style="font-weight:normal;">Paris-based software dev.<br>I build web things &amp; ride<br>whatever rolls or floats 🏄🛹</span></div>
+        </div>
+
+        <div style="position:absolute;bottom:44px;left:22px;background:rgba(255,248,225,.85);border:2px solid #7A2E0E;padding:4px 8px;font-family:monospace;font-size:9px;color:#7A2E0E;font-weight:bold;box-shadow:3px 3px 0 rgba(122,46,14,.4);">📻 RADIO-PLAGE.FM ▂▃▅▃▂</div>
+
+        <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(255,248,225,.9);border:2px solid #7A2E0E;border-radius:4px;padding:5px 14px;font-size:17px;letter-spacing:8px;box-shadow:3px 3px 0 rgba(122,46,14,.4);z-index:30;">🏄 🗺️ 📺 📻 ✉️</div>
+
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.09) 0 1px,transparent 1px 4px);pointer-events:none;z-index:40;"></div>
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 68%,rgba(0,0,0,.22) 100%);pointer-events:none;z-index:41;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">Mobile — console portable rétro</div>
+    <div class="mockup-body" style="padding:0;display:flex;justify-content:center;background:#f4ede0;">
+      <div style="width:190px;margin:14px 0;background:#FFF3C4;border:3px solid #7A2E0E;border-radius:14px;padding:10px 10px 14px;box-shadow:5px 5px 0 rgba(122,46,14,.35);">
+        <div style="position:relative;height:230px;border:3px solid #7A2E0E;border-radius:6px;overflow:hidden;background:linear-gradient(180deg,#FFD34E 0%,#FF9A3C 32%,#FF5E62 50%,#3EC9B9 51%,#2BB3A3 100%);">
+          <div style="position:absolute;top:0;left:0;right:0;height:16px;background:#FFF8E1;border-bottom:2px solid #7A2E0E;font-family:monospace;font-size:8px;color:#7A2E0E;font-weight:bold;display:flex;align-items:center;padding:0 6px;">▓ BEACH-OS GO</div>
+          <div style="position:absolute;top:26px;left:0;right:0;text-align:center;font-family:monospace;font-weight:900;font-size:13px;color:#FFF3C4;text-shadow:2px 2px 0 rgba(122,46,14,.5);">I'M LUCAS_</div>
+          <div style="position:absolute;top:52px;left:10px;right:10px;bottom:30px;background:#FFF8E1;border:2px solid #7A2E0E;box-shadow:3px 3px 0 #7A2E0E;padding:6px;font-family:monospace;font-size:8px;color:#7A2E0E;font-weight:bold;line-height:1.7;">► PROJECTS.SRF<br>► CAREER.LOG<br>► BEACH-TV<br>► RADIO-PLAGE.FM<br>► POSTCARD.EXE</div>
+          <div style="position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:11px;letter-spacing:5px;">🏄🗺️📺✉️</div>
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.08) 0 1px,transparent 1px 4px);pointer-events:none;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:10px;align-items:center;">
+          <div style="width:34px;height:34px;position:relative;">
+            <div style="position:absolute;top:12px;left:0;width:34px;height:10px;background:#7A2E0E;border-radius:2px;"></div>
+            <div style="position:absolute;top:0;left:12px;width:10px;height:34px;background:#7A2E0E;border-radius:2px;"></div>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <div style="width:16px;height:16px;background:#FF6B6B;border:2px solid #7A2E0E;border-radius:50%;"></div>
+            <div style="width:16px;height:16px;background:#3EC9B9;border:2px solid #7A2E0E;border-radius:50%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">Les « apps » du Beach OS</div>
+    <div class="mockup-body">
+      <div style="font-family:monospace;font-size:12px;line-height:2.1;color:#333;">
+        <b>🏄 PROJECTS.SRF</b> — projets &amp; réalisations, façon finder ; chaque projet s'ouvre dans sa fenêtre (visuels, stack, liens)<br>
+        <b>🗺️ CAREER.LOG</b> — parcours &amp; expériences en timeline rétro + CV téléchargeable<br>
+        <b>📺 BEACH-TV</b> — tes vidéos YouTube dans une télé cathodique<br>
+        <b>📝 ABOUT-ME.TXT</b> — bio, passions, ce qui t'anime<br>
+        <b>📻 RADIO-PLAGE.FM</b> — player audio lofi/surf-rock (easter egg ambiance)<br>
+        <b>✉️ POSTCARD.EXE</b> — contact : une carte postale à remplir + liens sociaux<br>
+        <b>⚙️ Barre de menu</b> — [CRT:ON/OFF], volume, FR|EN, horloge-météo déco
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>L'arrivée (l'effet wow)</h3>
+  <p class="subtitle">Écran noir → séquence de boot « BEACH-OS v1.0 » façon BIOS avec sons chiptune → flash d'allumage télé → le bureau se révèle avec le coucher de soleil et la vague sonore. Skippable d'un clic, joué une fois par session seulement.</p>
+</div>
