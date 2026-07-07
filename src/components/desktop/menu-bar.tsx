@@ -24,6 +24,8 @@ export function MenuBar() {
   const { t } = useTranslation();
   const crtEnabled = usePreferences((state) => state.crtEnabled);
   const toggleCrt = usePreferences((state) => state.toggleCrt);
+  const soundEnabled = usePreferences((state) => state.soundEnabled);
+  const toggleSound = usePreferences((state) => state.toggleSound);
   const time = useClock();
 
   return (
@@ -39,6 +41,14 @@ export function MenuBar() {
           className="border-2 border-ink px-1 hover:bg-sun-glow"
         >
           [{t("menu.crt")}:{crtEnabled ? "ON" : "OFF"}]
+        </button>
+        <button
+          type="button"
+          aria-pressed={soundEnabled}
+          onClick={toggleSound}
+          className={`border-2 border-ink px-1 hover:bg-sun-glow ${soundEnabled ? "" : "animate-pulse"}`}
+        >
+          [{t("menu.sound")}:{soundEnabled ? "🔊" : "🔇"}]
         </button>
         <span aria-hidden="true">☀ 28°C{time ? ` — ${time}` : ""}</span>
       </span>
