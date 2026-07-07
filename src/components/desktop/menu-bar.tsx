@@ -30,7 +30,9 @@ export function MenuBar() {
 
   return (
     <header className="relative z-50 flex h-8 items-center gap-4 border-b-2 border-ink bg-cream px-3 font-terminal text-xs font-bold text-ink">
-      <span className="font-pixel text-[10px]">🌊 {t("menu.system")}</span>
+      <span className="glitch-hover font-pixel text-[10px]">
+        🌊 {t("menu.system")}
+      </span>
       <span className="hidden sm:inline">{t("menu.files")}</span>
       <span className="hidden sm:inline">{t("menu.sessions")}</span>
       <span className="ml-auto flex items-center gap-3">

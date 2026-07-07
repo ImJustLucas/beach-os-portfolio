@@ -81,3 +81,55 @@ body {
     rgb(0 0 0 / 0.22) 100%
   );
 }
+
+@keyframes crt-turn-on {
+  0% {
+    transform: scaleY(0.004) scaleX(0.6);
+    filter: brightness(6);
+  }
+  55% {
+    transform: scaleY(0.004) scaleX(1);
+    filter: brightness(6);
+  }
+  75% {
+    transform: scaleY(1) scaleX(1);
+    filter: brightness(2);
+  }
+  100% {
+    transform: none;
+    filter: none;
+  }
+}
+
+.animate-turn-on {
+  animation: crt-turn-on 0.7s ease-out both;
+}
+
+@keyframes glitch-shift {
+  0%,
+  100% {
+    text-shadow: none;
+  }
+  30% {
+    text-shadow:
+      -2px 0 0 rgb(255 0 80 / 0.8),
+      2px 0 0 rgb(0 255 255 / 0.8);
+  }
+  60% {
+    text-shadow:
+      2px 0 0 rgb(255 0 80 / 0.8),
+      -2px 0 0 rgb(0 255 255 / 0.8);
+  }
+}
+
+.glitch-hover:hover {
+  animation: glitch-shift 0.3s steps(2) 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-turn-on,
+  .glitch-hover:hover,
+  .animate-pulse {
+    animation: none !important;
+  }
+}
