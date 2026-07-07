@@ -133,3 +133,16 @@ body {
     animation: none !important;
   }
 }
+
+:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+@media (pointer: fine) {
+  body {
+    cursor:
+      url("/images/cursor.png") 2 2,
+      auto;
+  }
+}
