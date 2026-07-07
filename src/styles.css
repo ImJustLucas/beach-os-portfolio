@@ -57,3 +57,27 @@ body {
   border-radius: 2px;
   box-shadow: 3px 3px 0 var(--color-ink);
 }
+
+.crt-scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgb(0 0 0 / 0.09) 0 1px,
+    transparent 1px 4px
+  );
+}
+
+.crt-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 68%,
+    rgb(0 0 0 / 0.22) 100%
+  );
+}
