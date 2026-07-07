@@ -7,6 +7,7 @@ import { CrtOverlay } from "@/components/desktop/crt-overlay";
 import { Desktop } from "@/components/desktop/desktop";
 import { Dock } from "@/components/desktop/dock";
 import { MenuBar } from "@/components/desktop/menu-bar";
+import { detectLocale } from "@/i18n/detect-locale";
 import { usePreferences } from "@/stores/preferences-store";
 import { WindowManagerProvider } from "@/windows/window-manager-provider";
 import appCss from "../styles.css?url";
@@ -31,13 +32,18 @@ export const Route = createRootRoute({
 function RootDocument({ children }: { children: ReactNode }) {
   const [isMounted, setIsMounted] = useState(false);
   const [isBooted, setIsBooted] = useState(false);
+  const locale = usePreferences((state) => state.locale);
+
   useEffect(() => {
     void usePreferences.persist.rehydrate();
+    if (localStorage.getItem("beach-os-prefs") === null) {
+      usePreferences.getState().setLocale(detectLocale(navigator.language));
+    }
     setIsMounted(true);
   }, []);
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
