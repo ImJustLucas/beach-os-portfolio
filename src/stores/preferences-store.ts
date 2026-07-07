@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 
 export type Locale = "fr" | "en";
 
-interface PreferencesState {
+export interface PreferencesState {
   crtEnabled: boolean;
   soundEnabled: boolean;
   locale: Locale;

@@ -23,7 +23,8 @@ describe("preferences store", () => {
     usePreferences.getState().toggleCrt();
     expect(usePreferences.getState().crtEnabled).toBe(false);
     const raw = localStorage.getItem("beach-os-prefs");
-    expect(raw).toContain('"crtEnabled":false');
+    expect(raw).not.toBeNull();
+    expect(JSON.parse(raw as string).state.crtEnabled).toBe(false);
   });
 
   it("switches locale", () => {
