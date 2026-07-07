@@ -13,6 +13,18 @@ export const en = {
   "app.contact": "POSTCARD.EXE",
   "window.close": "Close",
   "window.minimize": "Minimize",
+  "projects.open": "open",
+  "projects.back": "< back to files",
+  "projects.stack": "Stack",
+  "projects.demo": "View demo",
+  "projects.repo": "View code",
+  "career.download": "Download CV (PDF)",
+  "contact.title": "Send me a postcard",
+  "contact.name": "Your name",
+  "contact.message": "Your message",
+  "contact.send": "SEND ▸",
+  "contact.subject": "Postcard from imjustlucas.dev",
+  "contact.socials": "Or find me here",
 } as const;
 
 export type TranslationKey = keyof typeof en;
@@ -32,6 +44,18 @@ export const fr: Record<TranslationKey, string> = {
   "app.contact": "CARTE-POSTALE.EXE",
   "window.close": "Fermer",
   "window.minimize": "Réduire",
+  "projects.open": "ouvrir",
+  "projects.back": "< retour aux fichiers",
+  "projects.stack": "Stack",
+  "projects.demo": "Voir la démo",
+  "projects.repo": "Voir le code",
+  "career.download": "Télécharger le CV (PDF)",
+  "contact.title": "Envoie-moi une carte postale",
+  "contact.name": "Ton nom",
+  "contact.message": "Ton message",
+  "contact.send": "ENVOYER ▸",
+  "contact.subject": "Carte postale depuis imjustlucas.dev",
+  "contact.socials": "Ou retrouve-moi ici",
 };
 
 export const translations = { en, fr };
