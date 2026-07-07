@@ -43,3 +43,17 @@ body {
   font-family: var(--font-terminal);
   color: var(--color-ink);
 }
+
+:root {
+  --radius: 2px;
+}
+
+[data-slot="tooltip-content"],
+[data-slot="dropdown-menu-content"] {
+  border: 2px solid var(--color-ink);
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-terminal);
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 var(--color-ink);
+}
