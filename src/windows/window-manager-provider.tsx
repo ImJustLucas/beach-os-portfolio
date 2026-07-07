@@ -33,11 +33,14 @@ export function WindowManagerProvider({
 
   const routeWindowId = pathnameToWindowId(location.pathname);
 
+  const stateRef = React.useRef(state);
+  stateRef.current = state;
+
   React.useEffect(() => {
-    if (routeWindowId && !state.windows[routeWindowId].open) {
+    if (routeWindowId && !stateRef.current.windows[routeWindowId].open) {
       dispatch({ type: "OPEN", id: routeWindowId });
     }
-  }, [routeWindowId, state.windows]);
+  }, [routeWindowId]);
 
   const api = React.useMemo<WindowManagerApi>(() => {
     return {
