@@ -14,6 +14,8 @@ import { usePreferences } from "@/stores/preferences-store";
 import { WindowManagerProvider } from "@/windows/window-manager-provider";
 import appCss from "../styles.css?url";
 
+const BOOT_INIT_SCRIPT = `(function(){try{var booted=sessionStorage.getItem('beach-os-booted')==='1';var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(!booted&&!reduce){document.documentElement.classList.add('booting');}}catch(e){}})();`;
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -48,6 +50,7 @@ function RootDocument({ children }: { children: ReactNode }) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: BOOT_INIT_SCRIPT }} />
         <HeadContent />
       </head>
       <body className="overflow-hidden">
@@ -64,7 +67,12 @@ function RootDocument({ children }: { children: ReactNode }) {
           )}
         </div>
         {isMounted && !isBooted && (
-          <BootScreen onDone={() => setIsBooted(true)} />
+          <BootScreen
+            onDone={() => {
+              document.documentElement.classList.remove("booting");
+              setIsBooted(true);
+            }}
+          />
         )}
         <CrtOverlay />
         <Scripts />

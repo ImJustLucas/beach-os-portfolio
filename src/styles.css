@@ -146,3 +146,11 @@ body {
       auto;
   }
 }
+
+html.booting body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: #000;
+}
