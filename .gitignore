@@ -12,3 +12,5 @@ dist-ssr
 __unconfig*
 todos.json
 docs
+# Arbre de routes généré par TanStack Router (régénéré au dev/build)
+src/routeTree.gen.ts
