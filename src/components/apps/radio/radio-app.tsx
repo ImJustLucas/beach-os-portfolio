@@ -12,8 +12,11 @@ export function RadioApp() {
   const track = RADIO_TRACKS[trackIndex];
 
   const play = async () => {
+    if (!audioRef.current) {
+      return;
+    }
     try {
-      await audioRef.current?.play();
+      await audioRef.current.play();
       setIsPlaying(true);
       setHasError(false);
     } catch {
@@ -34,7 +37,15 @@ export function RadioApp() {
 
   return (
     <div className="space-y-3 p-4 font-terminal text-xs">
-      <audio ref={audioRef} src={track.src} onEnded={next} />
+      <audio
+        ref={audioRef}
+        src={track.src}
+        onEnded={next}
+        onError={() => {
+          setHasError(true);
+          setIsPlaying(false);
+        }}
+      />
       <p className="border-2 border-ink bg-ink px-2 py-1 font-bold text-sun">
         ♪ {track.title} {isPlaying && <span aria-hidden="true">▂▃▅▃▂</span>}
       </p>

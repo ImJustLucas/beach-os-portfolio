@@ -13,15 +13,21 @@ export function TvApp() {
   const [playingId, setPlayingId] = React.useState<string | null>(null);
 
   React.useEffect(() => {
+    const controller = new AbortController();
     getLatestVideos()
       .then((liveVideos) => {
-        if (liveVideos.length > 0) {
+        if (!controller.signal.aborted && liveVideos.length > 0) {
           setVideos(liveVideos);
         }
       })
       .catch((error: unknown) => {
-        console.warn("BEACH-TV: falling back to snapshot", error);
+        if (!controller.signal.aborted) {
+          console.warn("BEACH-TV: falling back to snapshot", error);
+        }
       });
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
