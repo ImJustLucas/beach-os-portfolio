@@ -104,10 +104,12 @@ export function playSound(name: SoundName): void {
 # Sons UI Beach OS
 
 Déposer ici des sons courts **libres de droits** (CC0) nommés exactement :
-`click.mp3`, `open.mp3`, `close.mp3`, `minimize.mp3`, `boot.mp3`, `error.mp3`.
+`click.mp3`, `open.mp3`, `close.mp3`, `minimize.mp3`, `boot.mp3`, `error.mp3`
++ `waves-loop.mp3` (boucle d'ambiance vague, 30 s - 2 min, bouclable proprement, ~1-2 Mo max).
 
 Ambiance : bips 8-bit / chiptune doux, < 1 s chacun (boot.mp3 peut durer ~2 s), < 50 Ko par fichier.
-Sources suggérées : pixabay.com/sound-effects (recherche « 8-bit click », « retro beep »), freesound.org (filtre CC0).
+Sources suggérées : pixabay.com/sound-effects (recherche « 8-bit click », « retro beep », « ocean waves loop »),
+freesound.org (filtre licence CC0), sfxr.me pour GÉNÉRER les bips 8-bit soi-même (export wav → mp3 via ffmpeg).
 Sans ces fichiers le site fonctionne, simplement muet.
 ```
 
@@ -426,6 +428,64 @@ Expected: verts.
 
 ```bash
 git add -A && git commit -m "feat: séquence de boot skippable jouée une fois par session"
+```
+
+---
+
+### Task 6: Boucle d'ambiance vague (spec §5)
+
+**Files:**
+- Create: `src/components/desktop/ambience-loop.tsx`
+- Modify: `src/routes/__root.tsx`
+
+- [ ] **Step 1: Implémenter `src/components/desktop/ambience-loop.tsx`** (joue en boucle très discrète quand le son est activé, se coupe quand il est désactivé ; tolérant au fichier absent)
+
+```tsx
+import * as React from 'react';
+import { usePreferences } from '@/stores/preferences-store';
+
+const AMBIENCE_VOLUME = 0.15;
+
+export function AmbienceLoop() {
+  const soundEnabled = usePreferences((state) => state.soundEnabled);
+  const audioRef = React.useRef<HTMLAudioElement>(null);
+
+  React.useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) {
+      return;
+    }
+    audio.volume = AMBIENCE_VOLUME;
+    if (soundEnabled) {
+      void audio.play().catch(() => {
+        // fichier absent ou autoplay bloqué : silence assumé, jamais de crash
+      });
+    } else {
+      audio.pause();
+    }
+  }, [soundEnabled]);
+
+  return <audio ref={audioRef} src="/sounds/waves-loop.mp3" loop />;
+}
+```
+
+- [ ] **Step 2: Monter dans `src/routes/__root.tsx`** — ajouter l'import et rendre le composant dans le `<body>`, juste avant `<CrtOverlay />` :
+
+```tsx
+import { AmbienceLoop } from '@/components/desktop/ambience-loop';
+// dans le body :
+        <AmbienceLoop />
+```
+
+- [ ] **Step 3: Vérification manuelle** — `pnpm dev` avec un `waves-loop.mp3` de test : activer le son dans la barre de menu → la vague démarre en fond discret ; le couper → silence immédiat ; sans fichier → aucun crash.
+
+- [ ] **Step 4: Vérifier + commit**
+
+Run: `pnpm typecheck && pnpm test && pnpm build`
+Expected: verts.
+
+```bash
+git add -A && git commit -m "feat: boucle d'ambiance vague liée au toggle son"
 ```
 
 ---
