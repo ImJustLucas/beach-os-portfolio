@@ -1,0 +1,81 @@
+import { useLocation, useNavigate } from "@tanstack/react-router";
+import * as React from "react";
+import { pathnameToWindowId, windowIdToRoute } from "./route-window";
+import { windowReducer } from "./window-reducer";
+import type { WindowAction } from "./window-reducer";
+import { createInitialWindowState } from "./window-types";
+import type { WindowId, WindowManagerState } from "./window-types";
+
+interface WindowManagerApi {
+  windows: WindowManagerState["windows"];
+  openWindow: (id: WindowId) => void;
+  closeWindow: (id: WindowId) => void;
+  minimizeWindow: (id: WindowId) => void;
+  restoreWindow: (id: WindowId) => void;
+  focusWindow: (id: WindowId) => void;
+  moveWindow: (id: WindowId, x: number, y: number) => void;
+}
+
+const WindowManagerContext = React.createContext<WindowManagerApi | null>(null);
+
+export function WindowManagerProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [state, dispatch] = React.useReducer(
+    windowReducer,
+    pathnameToWindowId(location.pathname),
+    createInitialWindowState,
+  );
+
+  const routeWindowId = pathnameToWindowId(location.pathname);
+
+  React.useEffect(() => {
+    if (routeWindowId) {
+      dispatch({ type: "OPEN", id: routeWindowId });
+    }
+  }, [routeWindowId]);
+
+  const api = React.useMemo<WindowManagerApi>(() => {
+    const send = (action: WindowAction) => dispatch(action);
+    return {
+      windows: state.windows,
+      openWindow: (id) => {
+        const route = windowIdToRoute(id);
+        if (route) {
+          navigate({ to: route });
+        }
+        send({ type: "OPEN", id });
+      },
+      closeWindow: (id) => {
+        send({ type: "CLOSE", id });
+        if (pathnameToWindowId(location.pathname) === id) {
+          navigate({ to: "/" });
+        }
+      },
+      minimizeWindow: (id) => send({ type: "MINIMIZE", id }),
+      restoreWindow: (id) => send({ type: "RESTORE", id }),
+      focusWindow: (id) => send({ type: "FOCUS", id }),
+      moveWindow: (id, x, y) => send({ type: "MOVE", id, x, y }),
+    };
+  }, [state.windows, navigate, location.pathname]);
+
+  return (
+    <WindowManagerContext.Provider value={api}>
+      {children}
+    </WindowManagerContext.Provider>
+  );
+}
+
+export function useWindowManager(): WindowManagerApi {
+  const context = React.useContext(WindowManagerContext);
+  if (!context) {
+    throw new Error(
+      "useWindowManager must be used inside WindowManagerProvider",
+    );
+  }
+  return context;
+}
