@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "@tanstack/react-router";
 import * as React from "react";
+import { playSound } from "@/lib/sound";
 import { pathnameToWindowId, windowIdToRoute } from "./route-window";
 import { windowReducer } from "./window-reducer";
 import { createInitialWindowState } from "./window-types";
@@ -42,6 +43,7 @@ export function WindowManagerProvider({
     return {
       windows: state.windows,
       openWindow: (id) => {
+        playSound("open");
         const route = windowIdToRoute(id);
         if (route) {
           navigate({ to: route });
@@ -49,13 +51,20 @@ export function WindowManagerProvider({
         dispatch({ type: "OPEN", id });
       },
       closeWindow: (id) => {
+        playSound("close");
         dispatch({ type: "CLOSE", id });
         if (pathnameToWindowId(location.pathname) === id) {
           navigate({ to: "/" });
         }
       },
-      minimizeWindow: (id) => dispatch({ type: "MINIMIZE", id }),
-      restoreWindow: (id) => dispatch({ type: "RESTORE", id }),
+      minimizeWindow: (id) => {
+        playSound("minimize");
+        dispatch({ type: "MINIMIZE", id });
+      },
+      restoreWindow: (id) => {
+        playSound("open");
+        dispatch({ type: "RESTORE", id });
+      },
       focusWindow: (id) => dispatch({ type: "FOCUS", id }),
       moveWindow: (id, x, y) => dispatch({ type: "MOVE", id, x, y }),
     };
