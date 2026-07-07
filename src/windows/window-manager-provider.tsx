@@ -2,7 +2,6 @@ import { useLocation, useNavigate } from "@tanstack/react-router";
 import * as React from "react";
 import { pathnameToWindowId, windowIdToRoute } from "./route-window";
 import { windowReducer } from "./window-reducer";
-import type { WindowAction } from "./window-reducer";
 import { createInitialWindowState } from "./window-types";
 import type { WindowId, WindowManagerState } from "./window-types";
 
@@ -34,13 +33,12 @@ export function WindowManagerProvider({
   const routeWindowId = pathnameToWindowId(location.pathname);
 
   React.useEffect(() => {
-    if (routeWindowId) {
+    if (routeWindowId && !state.windows[routeWindowId].open) {
       dispatch({ type: "OPEN", id: routeWindowId });
     }
-  }, [routeWindowId]);
+  }, [routeWindowId, state.windows]);
 
   const api = React.useMemo<WindowManagerApi>(() => {
-    const send = (action: WindowAction) => dispatch(action);
     return {
       windows: state.windows,
       openWindow: (id) => {
@@ -48,18 +46,18 @@ export function WindowManagerProvider({
         if (route) {
           navigate({ to: route });
         }
-        send({ type: "OPEN", id });
+        dispatch({ type: "OPEN", id });
       },
       closeWindow: (id) => {
-        send({ type: "CLOSE", id });
+        dispatch({ type: "CLOSE", id });
         if (pathnameToWindowId(location.pathname) === id) {
           navigate({ to: "/" });
         }
       },
-      minimizeWindow: (id) => send({ type: "MINIMIZE", id }),
-      restoreWindow: (id) => send({ type: "RESTORE", id }),
-      focusWindow: (id) => send({ type: "FOCUS", id }),
-      moveWindow: (id, x, y) => send({ type: "MOVE", id, x, y }),
+      minimizeWindow: (id) => dispatch({ type: "MINIMIZE", id }),
+      restoreWindow: (id) => dispatch({ type: "RESTORE", id }),
+      focusWindow: (id) => dispatch({ type: "FOCUS", id }),
+      moveWindow: (id, x, y) => dispatch({ type: "MOVE", id, x, y }),
     };
   }, [state.windows, navigate, location.pathname]);
 
