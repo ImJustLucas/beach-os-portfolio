@@ -28,16 +28,28 @@ export function BootScreen({ onDone }: { onDone: () => void }) {
   const { t } = useTranslation();
   const [visibleLines, setVisibleLines] = React.useState(0);
   const [isFinished, setIsFinished] = React.useState(() => shouldSkipBoot());
+  const hasNotifiedDone = React.useRef(false);
+  const finishTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+
+  const notifyDone = React.useCallback(() => {
+    if (hasNotifiedDone.current) {
+      return;
+    }
+    hasNotifiedDone.current = true;
+    onDone();
+  }, [onDone]);
 
   const finish = React.useCallback(() => {
     sessionStorage.setItem(SESSION_KEY, "1");
     setIsFinished(true);
-    onDone();
-  }, [onDone]);
+    notifyDone();
+  }, [notifyDone]);
 
   React.useEffect(() => {
     if (isFinished) {
-      onDone();
+      notifyDone();
       return;
     }
     playSound("boot");
@@ -45,14 +57,19 @@ export function BootScreen({ onDone }: { onDone: () => void }) {
       setVisibleLines((count) => {
         if (count >= BOOT_LINES.length) {
           clearInterval(interval);
-          setTimeout(finish, 500);
+          finishTimeout.current = setTimeout(finish, 500);
           return count;
         }
         return count + 1;
       });
     }, LINE_INTERVAL_MS);
-    return () => clearInterval(interval);
-  }, [isFinished, finish, onDone]);
+    return () => {
+      clearInterval(interval);
+      if (finishTimeout.current) {
+        clearTimeout(finishTimeout.current);
+      }
+    };
+  }, [isFinished, finish, notifyDone]);
 
   React.useEffect(() => {
     if (isFinished) {
