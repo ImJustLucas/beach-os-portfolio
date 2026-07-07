@@ -23,6 +23,9 @@ export function Window({ app }: { app: AppDefinition }) {
   const handleTitlePointerDown = (
     event: React.PointerEvent<HTMLDivElement>,
   ) => {
+    if (event.target instanceof HTMLElement && event.target.closest("button")) {
+      return;
+    }
     event.currentTarget.setPointerCapture(event.pointerId);
     dragOrigin.current = {
       pointerX: event.clientX,
