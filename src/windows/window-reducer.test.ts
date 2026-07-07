@@ -49,3 +49,28 @@ describe("windowReducer OPEN/CLOSE/FOCUS", () => {
     expect(state.windows.about.z).toBeGreaterThan(state.windows.projects.z);
   });
 });
+
+describe("windowReducer MINIMIZE/RESTORE/MOVE", () => {
+  it("MINIMIZE keeps the window open but minimized", () => {
+    let state = createInitialWindowState("about");
+    state = windowReducer(state, { type: "MINIMIZE", id: "about" });
+    expect(state.windows.about.open).toBe(true);
+    expect(state.windows.about.minimized).toBe(true);
+  });
+
+  it("RESTORE un-minimizes and re-focuses", () => {
+    let state = createInitialWindowState("about");
+    state = windowReducer(state, { type: "OPEN", id: "projects" });
+    state = windowReducer(state, { type: "MINIMIZE", id: "about" });
+    state = windowReducer(state, { type: "RESTORE", id: "about" });
+    expect(state.windows.about.minimized).toBe(false);
+    expect(state.windows.about.z).toBeGreaterThan(state.windows.projects.z);
+  });
+
+  it("MOVE updates coordinates", () => {
+    let state = createInitialWindowState("about");
+    state = windowReducer(state, { type: "MOVE", id: "about", x: 300, y: 200 });
+    expect(state.windows.about.x).toBe(300);
+    expect(state.windows.about.y).toBe(200);
+  });
+});
