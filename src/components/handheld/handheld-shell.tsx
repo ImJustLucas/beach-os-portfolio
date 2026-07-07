@@ -76,6 +76,7 @@ export function HandheldShell() {
                   key={app.id}
                   to={app.route ?? "/"}
                   onClick={() => setLocalAppId(null)}
+                  aria-label={t(app.titleKey)}
                 >
                   {app.icon}
                 </Link>
