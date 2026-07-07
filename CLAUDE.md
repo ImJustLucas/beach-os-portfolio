@@ -49,7 +49,7 @@ pnpm build      # build de production
 - **Strict equality** — always `===`
 - **Function names must explicitly describe what they do** — prefer `findUserByEmail` over `getUser`, `validateSubscriptionStatus` over `check`
 - **Single responsibility** — "Functions should do one thing. They should do it well. They should do it only." If a function does more than one thing, split it.
-- **No comments** — code must be self-explanatory through naming.
+- **No comments** — code must be self-explanatory through naming. **Zero comments, including no `TODO` markers.** Example/placeholder data that Lucas must replace with real content is tracked exclusively in `src/content/PLACEHOLDERS.md`, never via in-code comments. (This overrides the `// TODO(lucas):` convention still shown in the plan files under `docs/`.)
 
 ### Naming
 
@@ -66,5 +66,5 @@ pnpm build      # build de production
 
 ## Commits
 
-- Messages conventionnels **en français** (`feat: …`, `test: …`, `chore: …`), un commit par tâche.
+- Messages conventionnels **en anglais** (`feat: …`, `test: …`, `chore: …`), un commit par tâche.
 - **Ne jamais mentionner Claude / IA / assistant** dans les messages de commit.
