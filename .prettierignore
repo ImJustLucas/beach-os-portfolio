@@ -1,0 +1,21 @@
+# Dépendances
+node_modules/
+
+# Sorties de build
+.output/
+.vinxi/
+.tanstack/
+dist/
+build/
+
+# Fichiers générés
+src/routeTree.gen.ts
+.tanstack-intent/
+
+# Docs de référence (plans, specs, mockups) — ne pas reformater
+docs/
+
+# Divers
+pnpm-lock.yaml
+coverage/
+*.min.js
