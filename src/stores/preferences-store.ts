@@ -23,6 +23,6 @@ export const usePreferences = create<PreferencesState>()(
         set((state) => ({ soundEnabled: !state.soundEnabled })),
       setLocale: (locale) => set({ locale }),
     }),
-    { name: "beach-os-prefs" },
+    { name: "beach-os-prefs", skipHydration: true },
   ),
 );

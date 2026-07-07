@@ -69,6 +69,7 @@ export function Window({ app }: { app: AppDefinition }) {
         onPointerDown={handleTitlePointerDown}
         onPointerMove={handleTitlePointerMove}
         onPointerUp={handleTitlePointerUp}
+        onPointerCancel={handleTitlePointerUp}
         className="flex cursor-grab touch-none items-center gap-2 bg-ink px-2 py-1 font-terminal text-xs font-bold text-cream select-none active:cursor-grabbing"
       >
         <span aria-hidden="true" className="text-coral-soft">

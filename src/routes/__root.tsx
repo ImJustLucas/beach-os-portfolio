@@ -1,10 +1,12 @@
 import type { ReactNode } from "react";
+import { useEffect } from "react";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 
 import { CrtOverlay } from "@/components/desktop/crt-overlay";
 import { Desktop } from "@/components/desktop/desktop";
 import { Dock } from "@/components/desktop/dock";
 import { MenuBar } from "@/components/desktop/menu-bar";
+import { usePreferences } from "@/stores/preferences-store";
 import { WindowManagerProvider } from "@/windows/window-manager-provider";
 import appCss from "../styles.css?url";
 
@@ -26,6 +28,10 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: { children: ReactNode }) {
+  useEffect(() => {
+    void usePreferences.persist.rehydrate();
+  }, []);
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
