@@ -49,7 +49,7 @@ export function RadioApp() {
       <p className="border-2 border-ink bg-ink px-2 py-1 font-bold text-sun">
         ♪ {track.title} {isPlaying && <span aria-hidden="true">▂▃▅▃▂</span>}
       </p>
-      {hasError && <p role="alert">📻 … no signal (fichier audio manquant)</p>}
+      {hasError && <p role="alert">{t("radio.error")}</p>}
       <div className="flex gap-2">
         <button
           type="button"

@@ -20,11 +20,7 @@ export function TvApp() {
           setVideos(liveVideos);
         }
       })
-      .catch((error: unknown) => {
-        if (!controller.signal.aborted) {
-          console.warn("BEACH-TV: falling back to snapshot", error);
-        }
-      });
+      .catch(() => {});
     return () => {
       controller.abort();
     };
