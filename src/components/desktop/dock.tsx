@@ -8,7 +8,7 @@ export function Dock() {
   return (
     <nav
       aria-label="Dock"
-      className="absolute bottom-3 left-1/2 z-50 flex -translate-x-1/2 gap-3 rounded border-2 border-ink bg-cream/90 px-4 py-2 shadow-hard-sm"
+      className="absolute bottom-3 left-1/2 z-50 flex -translate-x-1/2 gap-4 rounded border-2 border-ink bg-cream/90 px-5 py-3 shadow-hard-sm"
     >
       {listApps().map((app) => {
         const state = windows[app.id];
@@ -25,7 +25,7 @@ export function Dock() {
             type="button"
             aria-label={t(app.titleKey)}
             onClick={handleClick}
-            className="relative text-2xl transition-transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ink"
+            className="relative text-4xl transition-transform hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ink"
           >
             {app.icon}
             {state.open && (
