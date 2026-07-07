@@ -25,6 +25,11 @@ export const en = {
   "contact.send": "SEND ▸",
   "contact.subject": "Postcard from imjustlucas.dev",
   "contact.socials": "Or find me here",
+  "tv.watch": "Press ▸ to play",
+  "tv.onYoutube": "Watch on YouTube",
+  "radio.play": "PLAY ▸",
+  "radio.pause": "PAUSE ▮▮",
+  "radio.next": "NEXT ▸▸",
 } as const;
 
 export type TranslationKey = keyof typeof en;
@@ -56,6 +61,11 @@ export const fr: Record<TranslationKey, string> = {
   "contact.send": "ENVOYER ▸",
   "contact.subject": "Carte postale depuis imjustlucas.dev",
   "contact.socials": "Ou retrouve-moi ici",
+  "tv.watch": "Appuie sur ▸ pour lancer",
+  "tv.onYoutube": "Voir sur YouTube",
+  "radio.play": "LECTURE ▸",
+  "radio.pause": "PAUSE ▮▮",
+  "radio.next": "SUIVANT ▸▸",
 };
 
 export const translations = { en, fr };
