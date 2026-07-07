@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 
+import { BootScreen } from "@/components/desktop/boot-screen";
 import { CrtOverlay } from "@/components/desktop/crt-overlay";
 import { Desktop } from "@/components/desktop/desktop";
 import { Dock } from "@/components/desktop/dock";
@@ -28,8 +29,11 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: { children: ReactNode }) {
+  const [isMounted, setIsMounted] = useState(false);
+  const [isBooted, setIsBooted] = useState(false);
   useEffect(() => {
     void usePreferences.persist.rehydrate();
+    setIsMounted(true);
   }, []);
 
   return (
@@ -38,12 +42,17 @@ function RootDocument({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body className="overflow-hidden">
-        <WindowManagerProvider>
-          <MenuBar />
-          <Desktop />
-          <Dock />
-          {children}
-        </WindowManagerProvider>
+        <div className={isBooted ? "animate-turn-on" : undefined}>
+          <WindowManagerProvider>
+            <MenuBar />
+            <Desktop />
+            <Dock />
+            {children}
+          </WindowManagerProvider>
+        </div>
+        {isMounted && !isBooted && (
+          <BootScreen onDone={() => setIsBooted(true)} />
+        )}
         <CrtOverlay />
         <Scripts />
       </body>

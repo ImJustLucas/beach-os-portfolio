@@ -30,6 +30,7 @@ export const en = {
   "radio.play": "PLAY ▸",
   "radio.pause": "PAUSE ▮▮",
   "radio.next": "NEXT ▸▸",
+  "boot.skip": "click to skip",
 } as const;
 
 export type TranslationKey = keyof typeof en;
@@ -66,6 +67,7 @@ export const fr: Record<TranslationKey, string> = {
   "radio.play": "LECTURE ▸",
   "radio.pause": "PAUSE ▮▮",
   "radio.next": "SUIVANT ▸▸",
+  "boot.skip": "clique pour passer",
 };
 
 export const translations = { en, fr };
