@@ -7,6 +7,8 @@ import { AboutApp } from "./about/about-app";
 import { CareerApp } from "./career/career-app";
 import { ContactApp } from "./contact/contact-app";
 import { ProjectsApp } from "./projects/projects-app";
+import { RadioApp } from "./radio/radio-app";
+import { TvApp } from "./tv/tv-app";
 
 export interface AppDefinition {
   id: WindowId;
@@ -49,6 +51,22 @@ export const APP_REGISTRY: Partial<Record<WindowId, AppDefinition>> = {
     route: "/contact",
     Component: ContactApp,
     defaultSize: { width: 440 },
+  },
+  tv: {
+    id: "tv",
+    icon: "📺",
+    titleKey: "app.tv",
+    route: "/tv",
+    Component: TvApp,
+    defaultSize: { width: 520 },
+  },
+  radio: {
+    id: "radio",
+    icon: "📻",
+    titleKey: "app.radio",
+    route: null,
+    Component: RadioApp,
+    defaultSize: { width: 300 },
   },
 };
 
