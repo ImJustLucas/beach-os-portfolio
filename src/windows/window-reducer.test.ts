@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { windowReducer } from "./window-reducer";
 import { createInitialWindowState } from "./window-types";
 
 describe("createInitialWindowState", () => {
@@ -13,5 +14,38 @@ describe("createInitialWindowState", () => {
     expect(state.windows.projects.open).toBe(true);
     expect(state.windows.projects.z).toBe(1);
     expect(state.nextZ).toBe(2);
+  });
+});
+
+describe("windowReducer OPEN/CLOSE/FOCUS", () => {
+  it("OPEN opens the window on top", () => {
+    let state = createInitialWindowState(null);
+    state = windowReducer(state, { type: "OPEN", id: "about" });
+    expect(state.windows.about.open).toBe(true);
+    expect(state.windows.about.z).toBe(1);
+    expect(state.nextZ).toBe(2);
+  });
+
+  it("OPEN on an already open window re-focuses it and un-minimizes it", () => {
+    let state = createInitialWindowState("about");
+    state = windowReducer(state, { type: "OPEN", id: "projects" });
+    state = windowReducer(state, { type: "MINIMIZE", id: "about" });
+    state = windowReducer(state, { type: "OPEN", id: "about" });
+    expect(state.windows.about.minimized).toBe(false);
+    expect(state.windows.about.z).toBeGreaterThan(state.windows.projects.z);
+  });
+
+  it("CLOSE closes and resets minimized", () => {
+    let state = createInitialWindowState("about");
+    state = windowReducer(state, { type: "CLOSE", id: "about" });
+    expect(state.windows.about.open).toBe(false);
+    expect(state.windows.about.minimized).toBe(false);
+  });
+
+  it("FOCUS raises the window above the others", () => {
+    let state = createInitialWindowState("about");
+    state = windowReducer(state, { type: "OPEN", id: "projects" });
+    state = windowReducer(state, { type: "FOCUS", id: "about" });
+    expect(state.windows.about.z).toBeGreaterThan(state.windows.projects.z);
   });
 });
