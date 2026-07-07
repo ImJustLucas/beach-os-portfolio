@@ -7,7 +7,9 @@ import { CrtOverlay } from "@/components/desktop/crt-overlay";
 import { Desktop } from "@/components/desktop/desktop";
 import { Dock } from "@/components/desktop/dock";
 import { MenuBar } from "@/components/desktop/menu-bar";
+import { HandheldShell } from "@/components/handheld/handheld-shell";
 import { detectLocale } from "@/i18n/detect-locale";
+import { useIsMobile } from "@/lib/use-is-mobile";
 import { usePreferences } from "@/stores/preferences-store";
 import { WindowManagerProvider } from "@/windows/window-manager-provider";
 import appCss from "../styles.css?url";
@@ -33,6 +35,7 @@ function RootDocument({ children }: { children: ReactNode }) {
   const [isMounted, setIsMounted] = useState(false);
   const [isBooted, setIsBooted] = useState(false);
   const locale = usePreferences((state) => state.locale);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     void usePreferences.persist.rehydrate();
@@ -49,12 +52,16 @@ function RootDocument({ children }: { children: ReactNode }) {
       </head>
       <body className="overflow-hidden">
         <div className={isBooted ? "animate-turn-on" : undefined}>
-          <WindowManagerProvider>
-            <MenuBar />
-            <Desktop />
-            <Dock />
-            {children}
-          </WindowManagerProvider>
+          {isMobile ? (
+            <HandheldShell />
+          ) : (
+            <WindowManagerProvider>
+              <MenuBar />
+              <Desktop />
+              <Dock />
+              {children}
+            </WindowManagerProvider>
+          )}
         </div>
         {isMounted && !isBooted && (
           <BootScreen onDone={() => setIsBooted(true)} />

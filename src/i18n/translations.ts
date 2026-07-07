@@ -31,6 +31,8 @@ export const en = {
   "radio.pause": "PAUSE ▮▮",
   "radio.next": "NEXT ▸▸",
   "boot.skip": "click to skip",
+  "handheld.title": "BEACH-OS GO",
+  "handheld.home": "HOME",
 } as const;
 
 export type TranslationKey = keyof typeof en;
@@ -68,6 +70,8 @@ export const fr: Record<TranslationKey, string> = {
   "radio.pause": "PAUSE ▮▮",
   "radio.next": "SUIVANT ▸▸",
   "boot.skip": "clique pour passer",
+  "handheld.title": "BEACH-OS GO",
+  "handheld.home": "ACCUEIL",
 };
 
 export const translations = { en, fr };
